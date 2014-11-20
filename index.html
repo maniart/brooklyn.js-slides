@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Brooklyn.js - Making art with browser's eyes and ears.</title>
+
+		<meta name="description" content="slides for Brooklyn.js Art+JS talk">
+		<meta name="author" content="Mani Nilchiani">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../revealjs/css/reveal.min.css">
+		<link rel="stylesheet" href="../revealjs/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../revealjs/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>web3.js</h1>
+					<h3>awesome.let('begin');</h3>
+					<p>
+						<small>Created by <a href="http://maniartstudio.com">Mani Nilchiani</a> / <a target="_blank" href="http://twitter.com/mani_art">@mani_art</a></small>
+					</p>
+				</section>
+				
+				<section>
+					<h2>A long time ago in a galaxy far, far away....</h2>
+					<p>
+						Called Netscape Communications, JavaScript was born. The year was 1995 and Cold war had given its place to Browser Wars.
+						But that language has come a very, very long way. We'll learn about this together.
+					</p>
+				</section>
+				
+				<section>
+					<h2>JavaScript is a</h2>
+					<ul>
+						<li>Loosely-typed</li>
+						<li>Object oriented (Prototypal)</li>
+						<li>Functional</li>
+						<li>Scripting language</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Loosely-typed</h2>
+					<p>
+						JS takes care of data types internally. Nothing but "var"s. And that's huge! Look:
+					</p>
+					
+<pre><code data-trim>
+// JavaScript
+var name = "dude";
+var age = 25;
+var height = 6.2;
+var work = function() {
+  for(var i = 0; i &lt; week.lengh; i++) {
+    goTo('office');
+  }	
+}; 
+var hobbies = ["music", "beer", "gif"];
+var keyValue = {
+  "i cant " : "really",
+  "think of" : "anything",
+  "you get" : "the picture"	
+};
+</code></pre>					
+					
+				</section>
+				
+				<section>
+					<h2>Loosely-typed contd.</h2>
+					<p>
+						Where as, in a strong typed language: 
+					</p>
+					
+<pre><code data-trim>
+// Java
+String name = "dude";
+int age = 25;
+float height = 6.2;
+private void work = function() {
+  for(int i : week) {
+    goTo('office');
+  }	
+}; 
+String[] hobbies = {"music", "beer", "gif"}; 
+// This array can ONLY be used for String datatype.
+Map&lt;String, String&gt; keyValue = new HashMap&lt;String, String&gt;();
+keyValue.put("i cant","really");
+keyValue.put("think of","anything");
+keyValue.put("you get","the picture");
+
+</code></pre>					
+					
+				</section>
+				
+				<section>
+					<h2>Object Oriented</h2>
+					<p>
+						Create blueprints, make instances. 
+					</p>
+					
+<pre><code data-trim>
+// A constructor (Think of it as the blueprint.)
+var Car = function() {
+  this.wheelCount = 4;
+  this.doorCount = 4;
+};
+
+// An instance (Use the blueprint to make something.)
+var myCar = new Car();
+</code></pre>					
+					
+				</section>
+				
+				<section>
+					<h2>Functional</h2>
+					<p>
+						Do this. Do that. Get me that value. Jazz hands. 
+					</p>
+					
+<pre><code data-trim>
+function makeCoffee() {
+  getFilter(2);
+  grindCoffee('fine'); 
+  addCoffee(3);
+  addWater(4);
+  brew();
+};
+function getFilter(filterSize) {
+//how to get a filter
+}
+function grindCoffee(grainSize) {
+//how to grind coffee
+}
+function addCoffee(spoons) {
+//how to add coffee
+}
+function addWater(amount) {
+//how to add water.
+}
+function brew() {
+//press that button!
+}
+</code></pre>					
+					
+				</section>
+				
+				<section>
+					<h2>Scripting Language</h2>
+					<h4>
+						Right 'n roll. 
+					</h4>
+					<p>
+						In C++ you would go through Pre-processing, Compiling and Linking to run the program, in JavaScript you save the file and you're done. 
+						<br>No fuss, no muss.
+					</p>
+								
+					
+				</section>
+
+				<section>
+					<h2>things[0] = first;</h2>
+					<h4>
+						Most basic of all setups...
+					</h4>
+					<p>
+						necessary to get you going with coding in JavaScript.
+					</p>
+
+<pre><code data-trim>
+&lt;!-- index.html --&gt;
+&lt;doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+  	&lt;script src="main.js"&gt;&lt;/script&gt;  
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+/* main.js */
+// here we go.
+
+
+</code></pre>		
+					
+				</section>
+
+				<section>
+					<h2>Naming things</h2>
+					<h4>
+						Anything but these reserved word:
+					</h4>
+
+<pre><code data-trim>
+abstract
+boolean break byte
+case catch char class const continue
+debugger default delete do double 
+else enum export extends
+false final finally float for function
+goto
+if implements import in instanceof int interface
+long
+native new null
+package private protected public
+return
+short static super switch synchronized
+this throw throws transient true try typeof
+var volatile void
+while with
+
+
+</code></pre>		
+					
+				</section>
+
+				<section>
+					<h2>style : write to be read</h2>
+					<h4>
+						Maintain readabiliy and avert suicide attempts.
+					</h4>
+<pre><code data-trim>
+// Use sensible memorable descriptive names. instead of:
+var temp = 5;
+// write:
+var membeCount = 5;
+
+// for all variables - except for some which we will cover later - use camelCasing. 
+var elementWidth = 275;
+var calculateWidth = function() { };
+var elementWidthPx = '275px';
+</code></pre>
+					<small>*We will have a series of these code style tips as we cover different topics.</small>
+
+		
+					
+				</section>
+
+				<section>
+					<h2>pattern : Single var declaration</h2>
+					<h4>
+						Stefanov calls this a pattern*. We'll see good patterns soon.  
+					</h4>
+<pre><code data-trim>
+// instead of:
+var distance = 20;
+var speed = 4.5;
+var vehicleType = 'bus';
+
+// you can do:
+var distance = 20,
+    speed = 4.5,
+    vehicleType = 'bus';
+
+</code></pre>
+			
+			<small>*patterns are tested solutions to common problems.</small>
+			</section>
+			
+			<section>
+					<h2>style : Don't you drop that var!</h2>
+
+<pre><code data-trim>
+
+// Never drop the "var" when declaring variables. 
+currentValue = 5
+
+// is totally not the same as
+var currentValue = 5;
+</code></pre>
+
+				</section>
+
+				<section>
+					<h2>Data types</h2>
+					<p>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Values,_variables,_and_literals" target="_blank">
+						JS keeps the list of data types short.
+						</a>
+					</p>
+					<p>String</p>
+<pre><code data-trim>
+
+// String
+var name = 'Luke Skywalker';
+// side note: Strings have a '.length' property:
+var numChars = name.length // 14
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Read more about String</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Data types</h2>
+					<p>Number</p>
+<pre><code data-trim>
+
+// Number
+var height = 6.5;
+// JS doesn't have floats and ints. if you want to clip decimals:
+var intHeight = Math.round(height);
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Read more about Number</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Data types</h2>
+					<p>Boolean</p>
+<pre><code data-trim>
+
+// Boolean
+var isRad = true;
+// there are also 'truthy' and 'falsy' values in JavaScript
+// falsy: false, 0, "", null, undefined, NaN
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Read more about Boolean</a>
+				</small>
+				<small>
+					<a target="blank" href="http://www.sitepoint.com/javascript-truthy-falsy/">Read more about truthy and falsy values</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Data types</h2>
+					<p>null</p>
+<pre><code data-trim>
+// null 
+var name = null;
+// null is a primitive data type. JS be like: no idea.
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">Read more about null</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Data types</h2>
+					<p>undefined</p>
+<pre><code data-trim>
+// undefined
+var songCount;
+// console.log(track); returns undefined. if a var is not defined, or
+// but not initialized, it has an undefined value.
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">Read more about undefined</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Objects</h2>
+					<p>Although not primitive data type, but a fundamental element. Unlike C++ or Java, objects in javascript are key value pairs. We'll learn a ton about objects soon.</p>
+<pre><code data-trim>
+// Object
+var mySong = {
+  name : 'Get lucky',
+  artist : 'Daft Punk',
+  stars : 5,
+  grammy : true,
+  play : function() {
+    // do some stuff
+  }
+};
+// It is said that pretty much everything in JS is an object. We'll see how shortly.
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Read more about Objects</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>style : never miss that semicolon after statements*</h2>
+					<p>When declaring variables, always remember to put in the semicolon. JS is forgiving and tried to figure out what you mean using 
+						<a href="" target="_blank">Automatic semicolon insertion</a>
+						But this can go wrong. Use 'em.
+					</p>
+<pre><code data-trim>
+var myVar = value;
+function doThis() {
+	
+};
+var myList = ['oranges', 'bananas', 'nutella'];
+</code></pre>
+				<small>
+					<a target="blank" href="http://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi">See where semicolon is a must.</a>
+				</small>
+				</section>
+				
+				<section>
+					<h2>Functions</h2>
+					<p>Make shit happen! We'll get more in depth with functions. But here are the basics:</p>
+<pre><code data-trim>
+// define functions in either of these two ways:
+var makeItHappen = function() {
+  // do magic	
+};
+// above is what we call an "anonymous functions". Part of what JS is famous for.
+// you've seen this bit:
+// the argument we pass to "click" is an "anonymous function". Much more on this soon.
+$('button').click(function() {
+  alert('Yo!');	
+});
+
+function makeItHappen() {
+  // do magic	
+};
+// above is a named function.
+</code></pre>
+				<small>
+					<a target="blank" href="http://designpepper.com/blog/drips/an-introduction-to-iifes-immediately-invoked-function-expressions">Read more about Functions</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Functions contd.</h2>
+					<p>Either change a state or return something. Sometimes both:</p>
+<pre><code data-trim>
+// Changes state
+var openConnection = function() {
+  createServer();
+  startServer();
+  listenToPort(80);	
+};
+
+// Returns something
+var add = function(a,b) {
+  return a + b;	
+};
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Read more about Functions</a>
+				</small>
+				</section>
+
+				
+				<section>
+					<h2>Arrays</h2>
+					<p>Collection of things.</p>
+<pre><code data-trim>
+// super basic array
+var checkList = ['do laundry', 'write code', 'make wireframes', 'drink beer'];
+
+// length of array
+var len = checkList.length;
+
+// add something to the end of array
+checkList.push('cook dinner');
+
+// we'll see a ton more about arrays soon
+
+
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Read more about Arrays</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>typeof</h2>
+					<p>operator to figure out the type of a variable</p>
+<pre><code data-trim>
+function calculate() {
+ // do calculation	
+}
+typeof calculate;
+// prints function
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">Read more about typeof</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Statements</h2>
+					<p>if else</p>
+<pre><code data-trim>
+
+//see if conditions meet.
+if(inventory.length > 0 &amp;&amp; user.hasCredit()) {
+  console.log('conditions met');
+  sale.setStatus('in-progress');
+} else {
+  console.log('Sale could not go through');
+  message.display('Sorry we are we are out of stock, or your credit is low.');
+  retrun;
+}
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else">Read more about if else</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Statements</h2>
+					<p>switch case</p>
+<pre><code data-trim>
+//checking different cases of one condition
+
+switch(difficulty) {
+  case 'easy':
+    game.start('easy');
+    break;
+  case 'medium':
+    game.start('medium');
+    break;
+  case 'pro':
+    game.start('pro');
+    break;
+  default:
+    game.start('easy');  
+}
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch">Read more about switch case</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Statements</h2>
+					<p>for, for in</p>
+<pre><code data-trim>
+//on arrays:
+var courses = [thesis, web3, pcomp];
+
+for( var i = 0; i&lt;course.length; i++ ){
+  courses[i].register();	
+}
+
+//on objects
+var thesis = {
+  credits : 6,
+  type : 'core',
+  register : function() {
+    login();
+    enterData();
+    submit();  
+  } 	
+};
+
+for( var prop in thesis ) {
+  console.log(prop, ' : ', thesis[prop]);
+}
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for">Read more about for</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Statements</h2>
+					<p>while</p>
+<pre><code data-trim>
+var courses = [thesis, web3, pcomp],
+  i = courses.length;
+
+while(i &gt; 0){
+  courses[i].register();	
+  i --;
+}
+/* or, alternatively */
+var i = courses.length;
+while(i --){
+  courses[i].register();	
+}
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while">Read more about while</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Statements</h2>
+					<p>do while</p>
+<pre><code data-trim>
+// like while. But runs at least once
+var courses = [thesis, web3, pcomp],
+  i = courses.length;
+
+do {
+  courses[i].register();	
+  i --;	
+} while(i &gt; 0);
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/do...while">Read more about while</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Statements</h2>
+					<p>throw</p>
+<pre><code data-trim>
+// define error cases in functions. 
+// Throw an error "object" when things go wrong. We will catch 'em later.
+// Error objects have "name" and "message" that we can use to log.
+var numberException = {
+  name : 'Number Exception',
+  message : 'Oh snap! Dude. put numbers in.'
+}
+function add(input1, input2) {
+  if(typeof input === 'number' &amp;&amp; typeof input2 === 'number') {
+    return input1 + input2;
+  } else {
+    throw numberException;
+  }
+}
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FStatements%2Fthrow">Read more about throw</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Statements</h2>
+					<p>try catch</p>
+<pre><code data-trim>
+// Remember we "threw" an error ball last slide? 
+// Yeah that. time to "try" and "catch" it.
+// Error objects have "name" and "message" that we can use to log.
+try {
+  add('bogus', 'bananas');
+} catch(e) {
+  console.log('Caught error:', e.name, ' with message: ', e.message);	
+}
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch">Read more about try catch</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Expressions</h2>
+					<p>Simple variables and literals</p>
+<pre><code data-trim>
+var name = "Mani";
+var isHere = true;
+var goHome = function() { // make things happen };
+var cart = ['milk', 'banana', 'eggs'];
+var ticket = {
+  arrival : '2:24',
+  departure : '12:00',
+  price : 20	
+};
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">Read more about Expressions</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Expressions contd.</h2>
+					<p>Ternary operation</p>
+<pre><code data-trim>
+// Short for if / else: 
+var isOpen = isClicked ? true : false;
+// same as:
+var isOpen;
+if(isOpen === true) {
+  isOpen = true;  	
+} else {
+  isOpen = false;	
+}
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">Read more about Expressions</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Expressions contd.</h2>
+					<p>Invocation</p>
+<pre><code data-trim>
+// call a function: 
+function calculate({
+  type : 'add',
+  numbers : [2,3,4,5]	
+});
+// If the function above looks odd, don't worry. We'll cover it.
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">Read more about Expressions</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Expressions contd.</h2>
+					<p>Invocation with New</p>
+<pre><code data-trim>
+// instantiate an instance of a "Class": 
+var myInstance = new Class();
+// we will cover constructors when we discuss Object Oriented JS.
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">Read more about Expressions</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Expressions contd.</h2>
+					<p>Refinement</p>
+<pre><code data-trim>
+// you can delete a member property from an object: 
+var demands = {
+  girls : 'wanna have fun',
+  I : 'wanna break free'
+};
+delete demands['girls'];
+// or delete demands.girls;
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">Read more about Expressions</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Expressions contd.</h2>
+					<p>Operations</p>
+<pre><code data-trim>
+// These are not functions, but operands. 
+var sessionCount = 16;
+typeof sessionCount;
+// prints 'number'
+
+var myBall = new Ball();
+myBall instanceof Ball;
+// prints true. We'll cover this later. No worries.
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">Read more about Expressions</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Scope!</h2>
+					<p>Don't be fooled by curly braces. Unlike Java and C++, in JavaScript, ONLY functions create scope. We will see how in the next few slides, and during the course of our semester. We will internalize it.</p>
+
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">Read more about function scopes</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Scope</h2>
+					<p>Global Vs. Local</p>
+<pre><code data-trim>
+// A global variable is a variable that sits in the outermost scope 
+// In case of browser, it's the window object:
+
+var windowWidth = 1124;
+
+// A local variable is one that is defined inside a function
+// and hence, it's only visible to it's local scope..... and the closure. 
+// but we will get to that a bit later.
+
+function multiply(number1, number2) {
+  var result = number1 * number2;	
+};
+multiply(2*3);
+console.log(result);
+
+// Prints Uncaught ReferenceError: result is not defined 
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">Read more about function scopes</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Scope contd.</h2>
+					<p>Global Vs. Local</p>
+<pre><code data-trim>
+var name = "Richard";
+
+function showName () {
+  var name = "Jack"; 
+  // local variable; only accessible in this showName function
+  console.log (name); 
+  // Jack
+}
+console.log (name); 
+// Richard: the global variable
+</code></pre>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/">Read more about scope</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Scope contd.</h2>
+					<p>No Block-Level scope</p>
+<pre><code data-trim>
+var name = "Richard";
+// the blocks in this if statement do not create a local context for the name variable
+if (name) {
+  name = "Jack"; // this name is the global name variable and it is being changed to "Jack" here
+  console.log (name); // Jack: still the global variable
+}
+
+// Here, the name variable is the same global name variable, but it was changed in the if statement
+console.log (name); // Jack
+</code></pre>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/">Read more about scope</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Scope contd.</h2>
+					<p>Remember earlier when we said NEVER drop the var? Here's why.</p>
+<pre><code data-trim>
+// If you don't declare your local variables with the var keyword, they are part of the global scope
+var name = "Michael Jackson";
+
+function showCelebrityName () {
+  console.log (name);
+}
+
+function showOrdinaryPersonName () {	
+  name = "Johnny Evers";
+  console.log (name);
+}
+showCelebrityName (); 
+// Michael Jackson
+
+// name is not a local variable, it simply changes the global name variable
+showOrdinaryPersonName (); 
+// Johnny Evers
+
+// The global variable is now Johnny Evers, not the celebrity name anymore
+showCelebrityName (); 
+// Johnny Evers
+
+// The solution is to declare your local variable with the var keyword
+function showOrdinaryPersonName () {	
+  var name = "Johnny Evers"; 
+  // Now name is always a local variable and it will not overwrite the global variable
+  console.log (name);
+}
+</code></pre>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/">Read more about scope</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Scope contd.</h2>
+					<p>Local takes precedence over global</p>
+<pre><code data-trim>
+var name = "Paul";
+
+function users () {
+  // Here, the name variable is local and it takes precedence over the same name variable in the global scope
+  var name = "Jack";
+
+  // The search for name starts right here inside the function before it attempts to look outside the function in the global scope
+ console.log (name); 
+}
+
+users (); 
+// Jack
+</code></pre>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/">Read more about scope</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Scope contd.</h2>
+					<p>Global variables. They are defined as a property in the window global object.</p>
+<pre><code data-trim>
+// So to define a global variable you can do:
+phoneType = 'iPhone';
+var company = 'apple';
+
+// Both do the same thing. Remember the (for ... in) we covered earlier?
+// we can use "in" to see if a property exists inside an object. try:
+console.log(phoneType in window); // true
+console.log(company in window); // true
+
+</code></pre>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/">Read more about scope</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Scope .... namespace</h2>
+					<p>Do Not Pollute the global Scope (namespace)</p>
+					<p><small>We're getting closer to the definition of namespace. <br> 
+						in JavaScript, namespace is where (inside which object or in what scope) a variable or a property sits</small></p>
+						<p><small>In professional JS development, we keep the number of global variables to minimum (1). We will see how to achieve this.</small></p>
+
+<pre><code data-trim>
+// instead, organize your app's code like so:
+var myApp = {}; // make a new object.
+myApp.calculate = {};
+myApp.calculate.add = function(num1, num2) {
+	return num1 + num2;		
+};
+
+
+</code></pre>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/">Read more about scope</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Scope .... namespace contd.</h2>
+					<p>Do Not Pollute the global Scope (namespace)</p>
+					<p>Good code is readable. It's maintainable. It's organized well.</p>
+					
+
+<pre><code data-trim>
+// or like so:
+var myApp = {
+  calculate : {
+    add : function(){},
+    subtract : function(){}
+  }
+	
+};
+
+</code></pre>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/">Read more about scope</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Back to Functions</h2>
+					<p>Closures</p>
+					<small>Clo ... wha?</small>
+					
+
+<pre><code data-trim>
+/* A closure is an inner function that has access to the outer (enclosing) function’s 
+ variables—scope chain. The closure has three scope chains: it has access to its own scope 
+ (variables defined between its curly brackets), it has access to the outer function’s variables, 
+ and it has access to the global variables. */
+
+function changeName() {
+  var newName = 'mani';
+  function changeHair() {
+    var newHairCut = 'crew cut';
+    console.log('changed name to : ', newName, ' and canged hair style to ', newHairCut);
+  }	
+};
+
+
+</code></pre>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/understand-javascript-closures-with-ease/">Read more Closures</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Back to Functions</h2>
+					<p>Functions are also Objects.</p>
+					<p>WTF?</p>
+					
+
+<pre><code data-trim>
+// Objects are key / value pairs. right? Well. What if we could add a key
+// and assign a value to it? Would that certify that Functions are also Object?
+function feedCat(){
+  // do cast stuff.	
+};
+feedCat.times = 5;
+console.log(feedCat.times);
+// prints 5.
+
+feedCat instanceof Object;
+// prints true
+// Holy shit.
+
+
+</code></pre>
+				<small>
+					<a target="blank" href="http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/">Read more Functions as objects</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>But that's a good thing!</h2>
+					<p>Because functions are also objects, we can pass 'em around like objects! </p>
+					<p>We have all probably done this:</p>
+					
+
+<pre><code data-trim>
+$('button').on('click', function() {
+  alert('click click mothafucka!');	
+};
+// or put in vanilla js:
+document.querySelector('button').addEventListener('click', function() {
+  alert('click click mothafucka!');	
+});
+// As you can see, in the first case, we are passing an un-named (anonymous)
+// Function as te second parameter to the function on();
+// And we are doing the same thing in the second example
+// with function attachEvent.
+
+
+</code></pre>
+				<small>
+					<a target="blank" href="http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/">Read more about Functions as objects</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Callback!</h2>
+					<p>JS be like: Yo! When you're done with your shit, do this one thing last.</p>
+
+
+<pre><code data-trim>
+// jQuery example we have probabbly used.
+$('img').hover(function() {
+  conquerWorld();
+});
+
+/* A callback function, also known as a higher-order function, is a function 
+ that is passed to another function (let’s call this other function “otherFunction”) 
+ as a parameter, and the callback function is called (executed) inside otherFunction. */
+
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Mozilla/js-ctypes/js-ctypes_reference/Callbacks">Read more about callbacks</a>
+				</small>
+				<br>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/">Another read about callbacks</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Callback! contd.</h2>
+					<p>Let's write a callback.</p>
+
+
+<pre><code data-trim>
+// So we know that callbacks are functions passed as arguments.
+// Just remember to pass the function definition. Not the invocation:
+
+function callback() {
+  alert('CALL ALL THE BACKS!');	
+};
+
+document.querySelector('body').addEventListener('click', callback);
+
+// note: document.querySelector('body').addEventListener('click', callback());
+// The parens following the callback make a huge difference.
+// We could have just used an anonymous function right then and there too:
+
+document.querySelector('body').addEventListener('click', function(){
+  alert('CALL ALL THE BACKS!');	
+});
+
+</code></pre>
+				<small>
+					<a target="blank" href="https://developer.mozilla.org/en-US/docs/Mozilla/js-ctypes/js-ctypes_reference/Callbacks">Read more about callbacks</a>
+				</small>
+				<br>
+				<small>
+					<a target="blank" href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/">Another read about callbacks</a>
+				</small>
+				</section>
+
+				<section>
+					<h2>Timing functions</h2>
+
+
+<pre><code data-trim>
+// setTimeout
+// JS be like: wait N ms before doint that thing.
+
+window.setTimeout(function() {
+  alert('yo');
+}, 2000);
+
+// Look familar? That's right. Callback baby!
+
+// JS be like: wait N ms between repetitions.
+window.setInterval(function() {
+  alert('yo');
+}, 2000);
+
+</code></pre>
+				
+				</section>
+
+				<section>
+					<h2>That's all folks!</h2>
+					<p>Assignment: </p>
+
+
+<pre><code data-trim>
+// Build a simple calculator. No interface needed. Should work in console.
+// Should: 
+// - be namespaced
+// - have properties such as: name , version, etc.
+// - have functions as properties: add, multiply, etc. the more the fancier.
+// - should store the results in an array, which should also be nested in the same namespace.
+
+
+// Hint: we need a little help from our friend "this". Don't worry too much about it
+// If it is unfamiliar. We will cover the hell out of it pretty soon. For now, take my word for it.
+
+var myApp = {
+  arr : [],
+  shove : function(thing) {
+    this.arr.push(thing)
+  }	
+};
+
+// Super special points if you make an interface for it. Totally not a requirement tho.
+
+</code></pre>
+				
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="../revealjs/lib/js/head.min.js"></script>
+		<script src="../revealjs/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+				theme: Reveal.getQueryHash().theme || 'night', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

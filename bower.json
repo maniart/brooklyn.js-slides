@@ -1,0 +1,27 @@
+{
+  "name": "Brooklyn.js ART+JS talk",
+  "version": "0.0.0",
+  "authors": [
+    "maniart <mani.art@gmail.com>"
+  ],
+  "description": "Slides for Brooklyn.js Art+Js anniversary talk",
+  "main": "index.html",
+  "keywords": [
+    "slides",
+    "art",
+    "js"
+  ],
+  "license": "MIT",
+  "homepage": "http://maninilchiani.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "~2.6.2"
+  }
+}
