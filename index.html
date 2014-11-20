@@ -386,10 +386,125 @@ function draw() {
 				<section>
 					<h4>AreYouThere?</h4>
 					<p>
-						Are works of art lifeless objects?
+						... Or do they gaze back at us?
 					</p>
-					
+					<iframe src="//player.vimeo.com/video/112430862" width="604" height="600" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+				</section>
 
+				<section>
+					<h4>AreYouThere? Under the hood</h4>
+					<ul>
+						<li>"Actual" OpenCV (Thank heavens for node.js binding)</li>
+						<li>socket.io</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>AreYouThere? Under the hood</h4>
+					<p>Lesson learned: Framing an LCD is mad fun.</p>
+					<img style="max-height: 600px;" src="./assets/digital-art-101.png">
+				</section>
+
+				<section>
+					<h4>AreYouThere? Under the hood</h4>
+					<p>Lesson learned: Framing an LCD is mad fun.</p>
+					<img style="max-height: 600px;" src="./assets/digital-art-101-2.png">
+				</section>
+
+				<section>
+					<h4>AreYouThere? Under the hood : Server</h4>
+					<ul>
+						<li>base64 FTW</li>
+					</ul>
+<pre style="width:100%;"><code data-trim>
+decodeBase64Image = function(dataString) {
+  var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+    response = {};
+  if (matches.length !== 3) {
+    throw new Error('Invalid input string');
+  }
+
+  response.type = matches[1];
+  response.data = new Buffer(matches[2], 'base64');
+  return response;
+};
+</code></pre>		
+				</section>
+
+				<section>
+					<h4>AreYouThere? Under the hood : Server</h4>
+					<ul>
+						<li>Call me back with faces.</li>
+					</ul>
+<pre style="width:100%;"><code data-trim>
+var cv = require('opencv');
+cv.readImage(imageBuffer.data, function(err, im){
+  if(err) throw err;
+  im.detectObject(cv.FACE_CASCADE, {}, function(err, faces){
+    /* OMG! Faces! */
+  });
+});
+</code></pre>		
+				</section>
+
+				<section>
+					<h4>AreYouThere? Under the hood : Server</h4>
+					<ul>
+						<li>socket.io</li>
+					</ul>
+<pre style="width:100%;"><code data-trim>
+io.on('connection', function(socket) {
+  socket.on('image', function(data){	    
+    imageBuffer = decodeBase64Image(data);
+  });
+  socket.volatile.emit('faceDetected', faces);
+  socket.broadcast.volatile.emit('faceDetected', faces);
+  socket.volatile.emit('faceAdded', [faceCount, totalFaceCount]);
+  socket.broadcast.volatile.emit('faceAdded', faceCount);	
+  socket.volatile.emit('faceRemoved', [faceCount, totalFaceCount]);
+  socket.broadcast.volatile.emit('faceRemoved', [faceCount, totalFaceCount]);
+});
+</code></pre>		
+				</section>
+
+				<section>
+					<h4>AreYouThere? Under the hood : Client</h4>
+					<ul>
+						<li>socket this, socket that + some Canvas love</li>
+					</ul>
+<pre style="width:100%;"><code data-trim>
+socket.on('faceDetected', function(imageBuffer){
+  draw(imageBuffer);
+});
+			
+socket.on('closer', function() {				
+  updateText(function() {
+    var index = Math.ceil(Math.random() * sentences.interactive.closer.length-1);
+    return sentences.interactive.closer[index];	
+  });
+});
+
+socket.on('farther', function() {					
+  updateText(function() {
+  var index = Math.ceil(Math.random() * sentences.interactive.farther.length-1);
+    return sentences.interactive.farther[index];	
+  });
+});
+		
+socket.on('faceAdded', function(args) {
+  updateText(function() {
+    var index = Math.ceil(Math.random() * sentences.predefined.length-1);
+    return typeof sentences.predefined[index] === 'function' ? sentences.predefined[index](args) : sentences.predefined[index];	
+  });
+});
+
+socket.on('faceRemoved', function(args) {
+  updateText(function() {
+    var index = Math.ceil(Math.random() * sentences.predefined.length-1);
+    return typeof sentences.predefined[index] === 'function' ? sentences.predefined[index](args) : sentences.predefined[index];	
+  });
+});
+</code></pre>		
 				</section>
 
 				
